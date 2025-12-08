@@ -24,7 +24,7 @@
 
 ## 🔬 The Academic Inspiration: Standing on the Shoulders of Giants
 
-本專案深受 **The Chinese University of Hong Kong, Shenzhen (CUHK-SZ)** 與 **Shenzhen Research Institute of Big Data** 發表的學術論文 **[HuatuoGPT-II, One-stage Training for Medical Adaption of LLMs]** 所啟發。
+本專案深受 **The Chinese University of Hong Kong, Shenzhen (CUHK-SZ)** 與 **Shenzhen Research Institute of Big Data** 發表的學術論文 **[HuatuoGPT-II, One-stage Training for Medical Adaption of LLMs](https://arxiv.org/abs/2311.09774)** 所啟發。
 
 該論文證明了：透過 "One-stage Adaptation" (單階段適應) 與高品質的醫療語料庫，中型模型也能展現出媲美 GPT-4 的醫療專業能力。我們被這份研究深深打動——它展示了如何用精簡的算力達到頂尖的效果。
 
