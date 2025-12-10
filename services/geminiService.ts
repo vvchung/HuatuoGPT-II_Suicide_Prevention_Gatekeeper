@@ -1,6 +1,6 @@
 import { GoogleGenAI, Type } from "@google/genai";
 import { Message, Role, SafetyLabel, GuardrailResponse, Language } from "../types";
-import { SYSTEM_INSTRUCTION_ZH, SYSTEM_INSTRUCTION_EN, GUARDRAIL_PROMPT } from "../constants";
+import { GET_SYSTEM_INSTRUCTION, GUARDRAIL_PROMPT } from "../constants";
 
 // Helper to get API key
 const getApiKey = () => process.env.API_KEY || '';
@@ -56,15 +56,19 @@ export const streamChatResponse = async (
 ): Promise<string> => {
   const client = createClient();
 
-  // Select base instruction based on language
-  let dynamicInstruction = language === 'en' ? SYSTEM_INSTRUCTION_EN : SYSTEM_INSTRUCTION_ZH;
+  // Get dynamic instruction based on language
+  let dynamicInstruction = GET_SYSTEM_INSTRUCTION(language);
   
   // Dynamic adjustments based on safety context
   if (safetyContext.label === SafetyLabel.SUICIDE_RISK) {
+    // Check if context is Taiwan (all except 'en' which is US demo)
+    const isTaiwanContext = language !== 'en';
+    const emergencyNum = isTaiwanContext ? '1925 or 119' : '988 or 911';
+
     dynamicInstruction += `\n\n[CRITICAL WARNING]: The user has been classified as SUICIDE RISK. Activate CRISIS INTERVENTION MODE immediately. 
     1. Acknowledge their pain validation. 
     2. Do not leave them alone in the conversation. 
-    3. Gently guide them to call ${language === 'en' ? '988 or 911' : '1925 or 119'}. 
+    3. Gently guide them to call ${emergencyNum}. 
     4. Use short, grounding sentences.`;
   } else if (safetyContext.label === SafetyLabel.PRESCRIPTION_REQUEST) {
     dynamicInstruction += `\n\n[WARNING]: User is asking for prescriptions. Politely REFUSE to prescribe medication. Explain that you are an AI assistant, not a doctor, and provide general health education instead.`;

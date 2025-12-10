@@ -10,7 +10,17 @@ export enum SafetyLabel {
   PRESCRIPTION_REQUEST = 'PRESCRIPTION_REQUEST'
 }
 
-export type Language = 'en' | 'zh-TW';
+export type Language = 
+  | 'en'     // English (International/US context for Judges)
+  | 'zh-TW'  // Traditional Chinese (Taiwan context)
+  | 'zh-CN'  // Simplified Chinese
+  | 'ja'     // Japanese
+  | 'ko'     // Korean
+  | 'vi'     // Vietnamese
+  | 'id'     // Indonesian
+  | 'th'     // Thai
+  | 'ms'     // Malay
+  | 'hi';    // Hindi
 
 export interface Message {
   id: string;

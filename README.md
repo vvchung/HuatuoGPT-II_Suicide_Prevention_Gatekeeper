@@ -3,7 +3,7 @@
 > **"When the school counseling office lights go out at 5 PM, we hope the light on the screen can catch every falling soul."**
 >
 > 🏆 Built for the **Vibe Code with Gemini 3 Pro** Hackathon.
-> *Bilingual Support: English & Traditional Chinese (繁體中文)*
+> *Multilingual Support: 🇺🇸 🇹🇼 🇨🇳 🇯🇵 🇰🇷 🇻🇳 🇮🇩 🇹🇭 🇲🇾 🇮🇳*
 
 ![License](https://img.shields.io/badge/License-MIT-green)
 ![Gemini 3 Pro](https://img.shields.io/badge/Model-Gemini%203%20Pro-purple)
@@ -59,9 +59,16 @@ To achieve extreme response speed and depth with limited resources, we designed 
 
 ## 🚀 Impact Features
 
-### 1. 🌏 Bilingual & Culturally Aware
-*   **English Mode (International Vibe):** Optimized for the hackathon judges. Uses **911/988** resources and adheres to Western psychological first aid protocols.
-*   **Chinese Mode (Taiwan Original):** Deeply localized with Taiwan's legal knowledge (Gender Equality Education Act) and local lifelines (1925, 119).
+### 1. 🌏 Global Reach, Local Rescue (Multilingual Support)
+We believe that **language should never be a barrier to survival**.
+Many universities in Taiwan host brilliant students from all over Asia. When a crisis hits, they revert to their mother tongue for comfort, but they need **local** help.
+
+*   **🇺🇸 English Mode (Judge/Demo Context):** Optimized for hackathon judges. Uses **911/988** resources and adheres to Western protocols.
+*   **🇹🇼 Taiwan Native Mode (Traditional Chinese):** Deeply localized with Taiwan's legal knowledge (Gender Equality Education Act) and local lifelines (1925, 119).
+*   **🌏 International Student Mode (New!):**
+    *   **Supported Languages:** Simplified Chinese 🇨🇳, Japanese 🇯🇵, Korean 🇰🇷, Vietnamese 🇻🇳, Indonesian 🇮🇩, Thai 🇹🇭, Malay 🇲🇾, Hindi 🇮🇳.
+    *   **The Logic:** Gemini speaks to them in their **native language** (providing emotional safety) but directs them to **Taiwan's emergency resources (119/1925)** (providing physical safety).
+    *   *Example:* A Vietnamese student feels panic. The AI comforts them in Vietnamese but tells them to dial **119** (Taiwan), not 115 (Vietnam).
 
 ### 2. 🚨 Panic Button Paradigm
 The interface is not just a chat window, it's a first-aid kit:
@@ -113,7 +120,7 @@ npm start
 
 This is not just a chatbot; it's our gentle compensation for a systemic regret.
 
-We proved that even if schools lack the budget to hire night-shift counselors and nurses, we can still use technology to hold the line. The HuatuoGPT-II paper demonstrated the possibility of medical LLMs, and we used **Gemini 3 Pro** to turn that possibility into a 24-hour guardian in every student's pocket.
+We proved that even if schools lack the budget to hire night-shift counselors and nurses, we can still use technology to hold the line. The HuatuoGPT-II paper demonstrated the possibility of medical LLMs, and we used **Gemini 3 Pro** to turn that possibility into a 24-hour guardian in every student's pocket—whether they are from Taipei, Tokyo, or Texas.
 
 **Technology is the campfire around which we gather in the dark.**
 
