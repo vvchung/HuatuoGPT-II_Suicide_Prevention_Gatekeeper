@@ -1,25 +1,36 @@
 import React, { useState, useRef, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
-import { Message, Role, SafetyLabel } from './types';
+import { Message, Role, SafetyLabel, Language } from './types';
 import { runGuardrail, streamChatResponse } from './services/geminiService';
 import EmergencyHeader from './components/EmergencyHeader';
 import MindfulnessTool from './components/MindfulnessTool';
+import { TRANSLATIONS } from './constants';
 
 const App: React.FC = () => {
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      id: 'welcome',
-      role: Role.MODEL,
-      text: '你好，我是 HuatuoGPT-II。我具備專業醫療知識，並已通過執業藥師考試。\n\n我可以為您提供健康諮詢、藥物衛教或心理支持。請注意，我無法開立處方，若有緊急心理困擾，我會盡力陪伴您。\n\n如果您遭遇了不公平的對待或感到受傷，這裡是一個安全的空間，我會在這裡聽你說。',
-      timestamp: Date.now(),
-      safetyLabel: SafetyLabel.SAFE
-    }
-  ]);
+  const [language, setLanguage] = useState<Language>('en'); // Default to English for international judges
+  const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [showMindfulness, setShowMindfulness] = useState(false);
   const bottomRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
+  
+  const t = TRANSLATIONS[language];
+
+  // Initialize Welcome Message based on Language
+  useEffect(() => {
+    // Only set initial message if empty (on load) or we want to clear history on lang switch
+    // For this demo, let's reset the chat when language changes to provide a clean context.
+    setMessages([
+      {
+        id: 'welcome',
+        role: Role.MODEL,
+        text: TRANSLATIONS[language].welcome,
+        timestamp: Date.now(),
+        safetyLabel: SafetyLabel.SAFE
+      }
+    ]);
+  }, [language]);
 
   // Scroll to bottom whenever messages change
   useEffect(() => {
@@ -78,6 +89,7 @@ const App: React.FC = () => {
         messages, // Send previous history
         userText,
         guardrailResult,
+        language, // Pass current language
         (chunkText) => {
           setMessages(prev => prev.map(msg => 
             msg.id === aiMsgId 
@@ -92,7 +104,7 @@ const App: React.FC = () => {
       setMessages(prev => [...prev, {
         id: Date.now().toString(),
         role: Role.SYSTEM,
-        text: "連線發生錯誤，請稍後再試。若有緊急狀況請直接撥打 119 或 1925。",
+        text: t.errorMsg,
         timestamp: Date.now()
       }]);
     } finally {
@@ -109,16 +121,20 @@ const App: React.FC = () => {
 
   const getSafetyLabelText = (label: SafetyLabel) => {
     switch (label) {
-      case SafetyLabel.SAFE: return '安全';
-      case SafetyLabel.SUICIDE_RISK: return '自殺風險';
-      case SafetyLabel.PRESCRIPTION_REQUEST: return '處方請求';
+      case SafetyLabel.SAFE: return t.safetySafe;
+      case SafetyLabel.SUICIDE_RISK: return t.safetyRisk;
+      case SafetyLabel.PRESCRIPTION_REQUEST: return t.safetyPrescription;
       default: return label;
     }
   };
 
   return (
     <div className="flex flex-col h-full bg-emerald-50">
-      <EmergencyHeader onMindfulnessClick={() => setShowMindfulness(true)} />
+      <EmergencyHeader 
+        onMindfulnessClick={() => setShowMindfulness(true)} 
+        language={language}
+        setLanguage={setLanguage}
+      />
 
       {/* Main Chat Area */}
       <main className="flex-1 overflow-y-auto p-4 sm:p-6 pb-32">
@@ -142,7 +158,7 @@ const App: React.FC = () => {
                   <div className="flex items-center gap-2 mb-2">
                     <div className={`w-2 h-2 rounded-full ${msg.safetyLabel === SafetyLabel.SUICIDE_RISK ? 'bg-red-500 animate-pulse' : 'bg-emerald-400'}`}></div>
                     <span className="text-xs font-bold text-emerald-700 uppercase tracking-wider">
-                      {msg.role === Role.SYSTEM ? 'System Alert' : 'HuatuoGPT-II'}
+                      {msg.role === Role.SYSTEM ? 'System Alert' : t.title}
                     </span>
                   </div>
                 )}
@@ -172,7 +188,7 @@ const App: React.FC = () => {
                     {/* Guardrail Status Footer (Only for Model) */}
                     {msg.role === Role.MODEL && msg.safetyLabel && (
                       <div className="mt-4 pt-2 border-t border-slate-100 flex justify-end items-center gap-2 text-[10px] text-slate-400">
-                        <span>守衛檢測:</span>
+                        <span>{t.guardrailLabel}:</span>
                         <span className={`px-1.5 py-0.5 rounded font-bold ${
                           msg.safetyLabel === SafetyLabel.SAFE 
                             ? 'bg-emerald-50 text-emerald-600' 
@@ -204,7 +220,7 @@ const App: React.FC = () => {
               value={input}
               onChange={handleInputResize}
               onKeyDown={handleKeyDown}
-              placeholder="請輸入您的對話... (Shift + Enter 換行)"
+              placeholder={t.inputPlaceholder}
               className="flex-1 bg-transparent border-none focus:ring-0 resize-none max-h-32 text-slate-700 placeholder-slate-400"
               rows={1}
             />
@@ -223,14 +239,14 @@ const App: React.FC = () => {
             </button>
           </div>
           <p className="text-center text-xs text-slate-400 mt-2">
-            AI 提供的資訊僅供參考，緊急情況請務必尋求專業協助。
+            {t.disclaimer}
           </p>
         </div>
       </footer>
 
       {/* Mindfulness Overlay */}
       {showMindfulness && (
-        <MindfulnessTool onClose={() => setShowMindfulness(false)} />
+        <MindfulnessTool onClose={() => setShowMindfulness(false)} language={language} />
       )}
     </div>
   );

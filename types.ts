@@ -10,6 +10,8 @@ export enum SafetyLabel {
   PRESCRIPTION_REQUEST = 'PRESCRIPTION_REQUEST'
 }
 
+export type Language = 'en' | 'zh-TW';
+
 export interface Message {
   id: string;
   role: Role;

@@ -1,13 +1,24 @@
 import React, { useEffect, useState } from 'react';
+import { Language } from '../types';
+import { TRANSLATIONS } from '../constants';
 
 interface MindfulnessToolProps {
   onClose: () => void;
+  language: Language;
 }
 
-const MindfulnessTool: React.FC<MindfulnessToolProps> = ({ onClose }) => {
+const MindfulnessTool: React.FC<MindfulnessToolProps> = ({ onClose, language }) => {
+  const t = TRANSLATIONS[language];
   const [phase, setPhase] = useState<'inhale' | 'hold' | 'exhale'>('inhale');
   const [timer, setTimer] = useState(4);
-  const [instruction, setInstruction] = useState('吸氣');
+  const [instruction, setInstruction] = useState(t.inhale);
+
+  useEffect(() => {
+    // Reset instruction immediately when language changes or tool opens
+    if (phase === 'inhale') setInstruction(t.inhale);
+    if (phase === 'hold') setInstruction(t.hold);
+    if (phase === 'exhale') setInstruction(t.exhale);
+  }, [language, t]);
 
   useEffect(() => {
     let interval: number;
@@ -19,7 +30,7 @@ const MindfulnessTool: React.FC<MindfulnessToolProps> = ({ onClose }) => {
         } else {
           setPhase('hold');
           setTimer(2);
-          setInstruction('屏氣');
+          setInstruction(t.hold);
         }
       } else if (phase === 'hold') {
         if (timer > 1) {
@@ -27,7 +38,7 @@ const MindfulnessTool: React.FC<MindfulnessToolProps> = ({ onClose }) => {
         } else {
           setPhase('exhale');
           setTimer(6);
-          setInstruction('慢慢吐氣');
+          setInstruction(t.exhale);
         }
       } else if (phase === 'exhale') {
         if (timer > 1) {
@@ -35,14 +46,14 @@ const MindfulnessTool: React.FC<MindfulnessToolProps> = ({ onClose }) => {
         } else {
           setPhase('inhale');
           setTimer(4);
-          setInstruction('吸氣');
+          setInstruction(t.inhale);
         }
       }
     };
 
     interval = window.setInterval(cycle, 1000);
     return () => clearInterval(interval);
-  }, [phase, timer]);
+  }, [phase, timer, t]);
 
   // Dynamic circle size classes
   const getCircleSize = () => {
@@ -53,7 +64,7 @@ const MindfulnessTool: React.FC<MindfulnessToolProps> = ({ onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 z-[60] bg-emerald-900/95 flex flex-col items-center justify-center text-white backdrop-blur-sm">
+    <div className="fixed inset-0 z-[60] bg-emerald-900/95 flex flex-col items-center justify-center text-white backdrop-blur-sm px-4">
       <button 
         onClick={onClose}
         className="absolute top-6 right-6 p-2 rounded-full hover:bg-white/10 transition"
@@ -63,7 +74,7 @@ const MindfulnessTool: React.FC<MindfulnessToolProps> = ({ onClose }) => {
         </svg>
       </button>
 
-      <h2 className="text-3xl font-light mb-12 tracking-widest">正念呼吸 4-2-6</h2>
+      <h2 className="text-2xl sm:text-3xl font-light mb-12 tracking-widest text-center">{t.mindfulnessTitle}</h2>
 
       <div className="relative flex items-center justify-center w-64 h-64">
         {/* Outer glow ring */}
@@ -76,8 +87,8 @@ const MindfulnessTool: React.FC<MindfulnessToolProps> = ({ onClose }) => {
       </div>
 
       <p className="mt-12 text-2xl font-medium animate-pulse">{instruction}</p>
-      <p className="mt-4 text-emerald-200 text-sm max-w-xs text-center">
-        跟隨圓圈的縮放調整呼吸，這能幫助活化副交感神經，緩解焦慮。
+      <p className="mt-4 text-emerald-200 text-sm max-w-xs text-center leading-relaxed">
+        {t.mindfulnessDesc}
       </p>
     </div>
   );
