@@ -29,7 +29,7 @@ const MindfulnessTool: React.FC<MindfulnessToolProps> = ({ onClose, language }) 
           setTimer(t => t - 1);
         } else {
           setPhase('hold');
-          setTimer(2);
+          setTimer(4); // Hold for 4s (previously 2)
           setInstruction(t.hold);
         }
       } else if (phase === 'hold') {
@@ -37,7 +37,7 @@ const MindfulnessTool: React.FC<MindfulnessToolProps> = ({ onClose, language }) 
           setTimer(t => t - 1);
         } else {
           setPhase('exhale');
-          setTimer(6);
+          setTimer(4); // Exhale for 4s (previously 6)
           setInstruction(t.exhale);
         }
       } else if (phase === 'exhale') {
@@ -45,7 +45,7 @@ const MindfulnessTool: React.FC<MindfulnessToolProps> = ({ onClose, language }) 
           setTimer(t => t - 1);
         } else {
           setPhase('inhale');
-          setTimer(4);
+          setTimer(4); // Inhale for 4s
           setInstruction(t.inhale);
         }
       }
@@ -59,7 +59,8 @@ const MindfulnessTool: React.FC<MindfulnessToolProps> = ({ onClose, language }) 
   const getCircleSize = () => {
     if (phase === 'inhale') return 'scale-150 duration-[4000ms] ease-out';
     if (phase === 'hold') return 'scale-150 duration-[0ms]';
-    if (phase === 'exhale') return 'scale-100 duration-[6000ms] ease-in-out';
+    // Matches the 4s duration for exhale
+    if (phase === 'exhale') return 'scale-100 duration-[4000ms] ease-in-out';
     return 'scale-100';
   };
 
