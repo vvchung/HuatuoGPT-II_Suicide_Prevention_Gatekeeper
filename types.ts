@@ -19,7 +19,6 @@ export type Language =
   | 'vi'     // Vietnamese
   | 'id'     // Indonesian
   | 'th'     // Thai
-  | 'ms'     // Malay
   | 'hi';    // Hindi
 
 export interface Message {

@@ -51,7 +51,6 @@ const EmergencyHeader: React.FC<EmergencyHeaderProps> = ({ onMindfulnessClick, l
                <option value="vi">🇻🇳 Tiếng Việt</option>
                <option value="id">🇮🇩 Indonesia</option>
                <option value="th">🇹🇭 ไทย</option>
-               <option value="ms">🇲🇾 Melayu</option>
                <option value="hi">🇮🇳 हिंदी</option>
              </select>
              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-1.5 text-slate-500">

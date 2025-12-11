@@ -3,7 +3,7 @@
 > **"When the school counseling office lights go out at 5 PM, we hope the light on the screen can catch every falling soul."**
 >
 > 🏆 Built for the **Vibe Code with Gemini 3 Pro** Hackathon.
-> *Multilingual Support: 🇺🇸 🇹🇼 🇨🇳 🇯🇵 🇰🇷 🇻🇳 🇮🇩 🇹🇭 🇲🇾 🇮🇳*
+> *Multilingual Support: 🇺🇸 🇹🇼 🇨🇳 🇯🇵 🇰🇷 🇻🇳 🇮🇩 🇹🇭 🇮🇳*
 
 ![License](https://img.shields.io/badge/License-MIT-green)
 ![Gemini 3 Pro](https://img.shields.io/badge/Model-Gemini%203%20Pro-purple)
@@ -66,7 +66,7 @@ Many universities in Taiwan host brilliant students from all over Asia. When a c
 *   **🇺🇸 English Mode (Judge/Demo Context):** Optimized for hackathon judges. Uses **911/988** resources and adheres to Western protocols.
 *   **🇹🇼 Taiwan Native Mode (Traditional Chinese):** Deeply localized with Taiwan's legal knowledge (Gender Equality Education Act) and local lifelines (1925, 119).
 *   **🌏 International Student Mode (New!):**
-    *   **Supported Languages:** Simplified Chinese 🇨🇳, Japanese 🇯🇵, Korean 🇰🇷, Vietnamese 🇻🇳, Indonesian 🇮🇩, Thai 🇹🇭, Malay 🇲🇾, Hindi 🇮🇳.
+    *   **Supported Languages:** Simplified Chinese 🇨🇳, Japanese 🇯🇵, Korean 🇰🇷, Vietnamese 🇻🇳, Indonesian 🇮🇩, Thai 🇹🇭, Hindi 🇮🇳.
     *   **The Logic:** Gemini speaks to them in their **native language** (providing emotional safety) but directs them to **Taiwan's emergency resources (119/1925)** (providing physical safety).
     *   *Example:* A Vietnamese student feels panic. The AI comforts them in Vietnamese but tells them to dial **119** (Taiwan), not 115 (Vietnam).
 

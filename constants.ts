@@ -64,7 +64,6 @@ If danger is detected, prioritize crisis assessment and promote 988.
     'vi': 'Vietnamese (Tiếng Việt)',
     'id': 'Indonesian (Bahasa Indonesia)',
     'th': 'Thai (ภาษาไทย)',
-    'ms': 'Malay (Bahasa Melayu)',
     'hi': 'Hindi (हिंदी)'
   };
 
@@ -296,28 +295,6 @@ export const TRANSLATIONS: Record<Language, TranslationSet> = {
     safetyPrescription: 'ขอยา',
     guardrailLabel: 'ตัวกรอง',
     errorMsg: 'เกิดข้อผิดพลาด ฉุกเฉินโทร 119 หรือ 1925'
-  },
-  'ms': {
-    title: 'HuatuoGPT-II',
-    subtitle: 'Pencegahan Bunuh Diri',
-    callPolice: 'Hubungi 119',
-    callHotline: 'Hubungi 1925',
-    callHotlineNum: '1925',
-    callPoliceNum: '119',
-    mindfulness: 'Bernafas',
-    mindfulnessTitle: 'Pernafasan Minda',
-    mindfulnessDesc: 'Ikut bulatan untuk mengawal pernafasan dan kurangkan keresahan.',
-    inhale: 'Tarik',
-    hold: 'Tahan',
-    exhale: 'Hembus',
-    inputPlaceholder: 'Taip mesej anda...',
-    disclaimer: 'Info AI sebagai rujukan. Jika kecemasan, cari bantuan pakar.',
-    welcome: 'Helo, saya HuatuoGPT-II. Saya sedia membantu kesihatan mental anda semasa belajar di Taiwan.\n\nJika anda dalam kesusahan, saya boleh bantu hubungkan dengan talian kecemasan Taiwan (119/1925). Ruang ini selamat untuk anda.',
-    safetySafe: 'Selamat',
-    safetyRisk: 'Risiko',
-    safetyPrescription: 'Preskripsi',
-    guardrailLabel: 'Pengawal',
-    errorMsg: 'Ralat sambungan. Kecemasan hubungi 119 atau 1925.'
   },
   'hi': {
     title: 'HuatuoGPT-II',
