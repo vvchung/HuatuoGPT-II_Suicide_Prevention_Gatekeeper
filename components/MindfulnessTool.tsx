@@ -29,7 +29,7 @@ const MindfulnessTool: React.FC<MindfulnessToolProps> = ({ onClose, language }) 
           setTimer(t => t - 1);
         } else {
           setPhase('hold');
-          setTimer(4); // Hold for 4s (previously 2)
+          setTimer(4); // Hold for 4s
           setInstruction(t.hold);
         }
       } else if (phase === 'hold') {
@@ -37,7 +37,7 @@ const MindfulnessTool: React.FC<MindfulnessToolProps> = ({ onClose, language }) 
           setTimer(t => t - 1);
         } else {
           setPhase('exhale');
-          setTimer(4); // Exhale for 4s (previously 6)
+          setTimer(4); // Exhale for 4s
           setInstruction(t.exhale);
         }
       } else if (phase === 'exhale') {

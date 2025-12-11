@@ -73,7 +73,7 @@ Many universities in Taiwan host brilliant students from all over Asia. When a c
 ### 2. 🚨 Panic Button Paradigm
 The interface is not just a chat window, it's a first-aid kit:
 *   **Always-on Header:** A one-tap button to dial **911/119** is always within reach.
-*   **Visual Mindfulness:** Built-in CSS animation driven **4-2-6 Mindful Breathing**. When words fail to soothe anxiety, we use visual cues to guide the body.
+*   **Visual Mindfulness:** Built-in CSS animation driven **4-4-4 Mindful Breathing**. When words fail to soothe anxiety, we use visual cues to guide the body.
 
 ---
 
