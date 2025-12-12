@@ -135,7 +135,7 @@ export const TRANSLATIONS: Record<Language, TranslationSet> = {
     exhale: '慢慢吐氣',
     inputPlaceholder: '請輸入您的對話... (Shift + Enter 換行)',
     disclaimer: 'AI 提供的資訊僅供參考，緊急情況請務必尋求專業協助。',
-    welcome: '你好，我是 HuatuoGPT-II。我具備專業醫療知識，是你在台灣求學期間的健康守護者。\n\n我可以為您提供健康諮詢或心理支持。請注意，我無法開立處方。若有緊急狀況，我會協助您聯繫台灣的緊急資源 (119/1925)。\n\n這裡是一個安全的空間，我會在這裡聽你說。',
+    welcome: '你好，我是 HuatuoGPT-II。我具備專業醫療知識，是你求學期間的健康守護者。\n\n我可以為您提供健康諮詢或心理支持。請注意，我無法開立處方。若有緊急狀況，我會協助您聯繫緊急資源 (119/1925)。\n\n這裡是一個安全的空間，我會在這裡聽你說。',
     safetySafe: '安全',
     safetyRisk: '自殺風險',
     safetyPrescription: '處方請求',
