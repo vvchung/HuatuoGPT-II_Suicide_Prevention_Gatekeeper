@@ -159,8 +159,8 @@ export const TRANSLATIONS: Record<Language, TranslationSet> = {
     disclaimer: 'AI info is for reference. For emergencies, seek professional help.',
     welcome: 'Hello, I am HuatuoGPT-II. I am an AI mental health companion.\n\nI can provide health education and emotional support. Note: I cannot prescribe medication.\n\n(Demo Mode: Using US Emergency Numbers 911/988)',
     safetySafe: 'SAFE',
-    safetyRisk: 'RISK',
-    safetyPrescription: 'RX REQ',
+    safetyRisk: 'SUICIDE RISK',
+    safetyPrescription: 'RX REQUEST',
     guardrailLabel: 'Guardrail',
     errorMsg: 'Connection error. Dial 911 or 988 if urgent.'
   },
@@ -181,7 +181,7 @@ export const TRANSLATIONS: Record<Language, TranslationSet> = {
     disclaimer: 'AI 资讯仅供参考，紧急情况请寻求台湾专业协助。',
     welcome: '你好，我是 HuatuoGPT-II。作为你在台湾求学的健康守护者，我可以提供健康咨询与心理支持。\n\n若有紧急心理困扰，我会协助你联系台湾的紧急资源 (1925/119)。这里很安全，我会陪着你。',
     safetySafe: '安全',
-    safetyRisk: '风险',
+    safetyRisk: '自杀风险',
     safetyPrescription: '处方请求',
     guardrailLabel: '检测',
     errorMsg: '连接错误。紧急情况请拨打 119 或 1925。'
@@ -203,8 +203,8 @@ export const TRANSLATIONS: Record<Language, TranslationSet> = {
     disclaimer: 'AIの情報は参考用です。緊急時は専門機関へ連絡してください。',
     welcome: 'こんにちは、HuatuoGPT-IIです。台湾で学ぶあなたの心の支えになります。\n\n医療知識や心理的サポートを提供できますが、薬の処方はできません。辛い時は、台湾の緊急連絡先 (119/1925) も案内します。安心してお話しください。',
     safetySafe: '安全',
-    safetyRisk: 'リスク',
-    safetyPrescription: '処方要求',
+    safetyRisk: '自殺リスク',
+    safetyPrescription: '処方依頼',
     guardrailLabel: 'ガードレール',
     errorMsg: 'エラーが発生しました。緊急時は119または1925へ。'
   },
@@ -225,7 +225,7 @@ export const TRANSLATIONS: Record<Language, TranslationSet> = {
     disclaimer: 'AI 정보는 참고용입니다. 응급 상황 시 전문가의 도움을 받으세요.',
     welcome: '안녕하세요, HuatuoGPT-II입니다. 대만에서 유학 중인 당신의 건강을 지원합니다.\n\n건강 상담이나 심리적 지원을 제공할 수 있습니다. 응급 상황 시 대만의 긴급 번호(119/1925)를 안내해 드립니다. 이곳은 안전하니 편하게 말씀하세요.',
     safetySafe: '안전',
-    safetyRisk: '위험',
+    safetyRisk: '자살 위험',
     safetyPrescription: '처방 요청',
     guardrailLabel: '가드레일',
     errorMsg: '오류가 발생했습니다. 급한 경우 119나 1925로 전화하세요.'
@@ -247,8 +247,8 @@ export const TRANSLATIONS: Record<Language, TranslationSet> = {
     disclaimer: 'Thông tin AI chỉ để tham khảo. Khẩn cấp hãy gọi trợ giúp.',
     welcome: 'Xin chào, tôi là HuatuoGPT-II. Tôi ở đây để hỗ trợ sức khỏe tinh thần cho bạn khi đang học tập tại Đài Loan.\n\nNếu bạn gặp khó khăn, tôi có thể giúp bạn kết nối với các nguồn hỗ trợ khẩn cấp tại Đài Loan (119/1925). Hãy yên tâm chia sẻ.',
     safetySafe: 'An toàn',
-    safetyRisk: 'Rủi ro',
-    safetyPrescription: 'Kê đơn',
+    safetyRisk: 'Nguy cơ tự sát',
+    safetyPrescription: 'Yêu cầu kê đơn',
     guardrailLabel: 'Kiểm duyệt',
     errorMsg: 'Lỗi kết nối. Khẩn cấp hãy gọi 119 hoặc 1925.'
   },
@@ -269,8 +269,8 @@ export const TRANSLATIONS: Record<Language, TranslationSet> = {
     disclaimer: 'Info AI hanya referensi. Untuk darurat, cari bantuan profesional.',
     welcome: 'Halo, saya HuatuoGPT-II. Saya di sini untuk mendukung kesehatan mental Anda selama studi di Taiwan.\n\nSaya tidak bisa meresepkan obat, tetapi saya bisa menemani Anda. Dalam keadaan darurat, hubungi nomor Taiwan 119 atau 1925.',
     safetySafe: 'Aman',
-    safetyRisk: 'Risiko',
-    safetyPrescription: 'Resep',
+    safetyRisk: 'Risiko Bunuh Diri',
+    safetyPrescription: 'Minta Resep',
     guardrailLabel: 'Pengawal',
     errorMsg: 'Koneksi error. Darurat hubungi 119 atau 1925.'
   },
@@ -291,8 +291,8 @@ export const TRANSLATIONS: Record<Language, TranslationSet> = {
     disclaimer: 'AI ให้ข้อมูลเบื้องต้นเท่านั้น ฉุกเฉินโปรดติดต่อแพทย์',
     welcome: 'สวัสดี ฉันคือ HuatuoGPT-II ฉันพร้อมดูแลสุขภาพใจของคุณขณะเรียนที่ไต้หวัน\n\nฉันไม่สามารถสั่งยาได้ แต่ฉันพร้อมรับฟัง หากฉุกเฉิน โปรดติดต่อเบอร์ฉุกเฉินไต้หวัน 119 หรือ 1925',
     safetySafe: 'ปลอดภัย',
-    safetyRisk: 'เสี่ยง',
-    safetyPrescription: 'ขอยา',
+    safetyRisk: 'เสี่ยงฆ่าตัวตาย',
+    safetyPrescription: 'ขอใบสั่งยา',
     guardrailLabel: 'ตัวกรอง',
     errorMsg: 'เกิดข้อผิดพลาด ฉุกเฉินโทร 119 หรือ 1925'
   },
@@ -313,8 +313,8 @@ export const TRANSLATIONS: Record<Language, TranslationSet> = {
     disclaimer: 'AI जानकारी केवल संदर्भ के लिए है। आपात स्थिति में मदद लें।',
     welcome: 'नमस्ते, मैं HuatuoGPT-II हूँ। ताइवान में आपकी पढ़ाई के दौरान मैं आपके मानसिक स्वास्थ्य का साथी हूँ।\n\nआपात स्थिति में, ताइवान के आपातकालीन नंबर 119 या 1925 पर संपर्क करें।',
     safetySafe: 'सुरक्षित',
-    safetyRisk: 'जोखिम',
-    safetyPrescription: 'पर्चा',
+    safetyRisk: 'आत्महत्या जोखिम',
+    safetyPrescription: 'पर्चा अनुरोध',
     guardrailLabel: 'सुरक्षा',
     errorMsg: 'त्रुटि। आपात स्थिति में 119 या 1925 डायल करें।'
   }
