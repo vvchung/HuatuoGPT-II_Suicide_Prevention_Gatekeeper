@@ -9,34 +9,51 @@ const getApiKey = () => process.env.API_KEY || '';
 const createClient = () => new GoogleGenAI({ apiKey: getApiKey() });
 
 /**
- * PII Sanitizer based on medical de-identification standards
+ * PII Sanitizer based on Cross-domain De-identification Guide (Medical x Legal)
  */
 const sanitizePII = (text: string): string => {
   let sanitized = text;
 
   const patterns = {
-    // 身分證號 (台灣/中國通用簡化版)
-    id: /[A-Z][12]\d{8}|[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([012]\d)|3[01])\d{3}[0-9Xx]/g,
-    // 電話號碼 (手機與市話)
-    phone: /(\d{2,4}-\d{6,8})|(09\d{8})|(\+886\d{9})/g,
+    // 身分證號 / 居留證號
+    id: /[A-Z][12]\d{8}/g,
+    // 電話號碼 (手機、市話、國際碼)
+    phone: /(09\d{8})|(\d{2,4}-\d{6,8})|(\+886\d{9})/g,
     // 具體日期 (YYYY/MM/DD, YYYY-MM-DD, 某年某月某日)
     date: /\d{4}[-/年]\d{1,2}[-/月]\d{1,2}日?/g,
-    // 地址關鍵字 (路, 巷, 號, 樓)
+    // 地址關鍵字 (路, 街, 巷, 弄, 號, 樓)
     address: /[^,\s\n]+[路街巷弄號樓]/g,
-    // 姓名引導格式 (姓名：王大明)
-    nameIntro: /(姓名[:：]\s?[\u4e00-\u9fa5]{2,4})/g
+    // 姓名引導格式 (姓名：王大明) -> 轉為「當事人」
+    nameIntro: /姓名[:：]\s?[\u4e00-\u9fa5]{2,4}/g,
+    // 車牌號碼
+    plate: /[A-Z]{1,3}-\d{3,4}/g,
+    // 法院案號 (例如：112-123字第456號)
+    caseNo: /\d{1,3}-\d{1,3}字第\d+號/g
   };
 
-  const hospitals = ["義大醫院", "高雄榮總", "長庚醫院", "海軍總醫院", "健仁醫院", "右昌聯合醫院"];
+  const sensitiveTerms = [
+    "義大醫院", "高雄榮總", "長庚醫院", "海軍總醫院", "健仁醫院", "右昌聯合醫院",
+    "高雄地方法院", "橋頭地院", "台北地院", "台中地院",
+    "台積電", "中華電信", "鴻海",
+    "小港區百貨", "信義區百貨", "夢時代"
+  ];
 
   sanitized = sanitized.replace(patterns.id, "[ID]");
-  sanitized = sanitized.replace(patterns.phone, "[PHONE]");
+  sanitized = sanitized.replace(patterns.phone, "[CONTACT]");
   sanitized = sanitized.replace(patterns.date, "[DATE]");
   sanitized = sanitized.replace(patterns.address, "[ADDR]");
-  sanitized = sanitized.replace(patterns.nameIntro, (match) => match.split(/[:：]/)[0] + "：[PT]");
-  
-  hospitals.forEach(h => {
-    sanitized = sanitized.split(h).join("[HOSPITAL]");
+  sanitized = sanitized.replace(patterns.nameIntro, "姓名：當事人");
+  sanitized = sanitized.replace(patterns.plate, "[VEHICLE]");
+  sanitized = sanitized.replace(patterns.caseNo, "[ID]"); // 案號也歸類為 ID
+
+  sensitiveTerms.forEach(term => {
+    // 根據功能化地點原則替換
+    let replacement = "[PLACE]";
+    if (term.includes("醫院")) replacement = "某醫療院所";
+    if (term.includes("法院") || term.includes("地院")) replacement = "某法院";
+    if (term.includes("公司") || term.includes("電")) replacement = "某企業";
+    
+    sanitized = sanitized.split(term).join(replacement);
   });
 
   return sanitized;
