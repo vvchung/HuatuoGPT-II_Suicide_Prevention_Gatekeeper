@@ -69,11 +69,12 @@ Many universities in Taiwan host brilliant students from all over Asia. When a c
     *   **The Logic:** Gemini speaks to them in their **native language** (providing emotional safety) but directs them to **Taiwan's emergency resources (119/1925)** (providing physical safety).
     *   *Example:* A Vietnamese student feels panic. The AI comforts them in Vietnamese but tells them to dial **119** (Taiwan), not 115 (Vietnam).
 
-### 2. 🛡️ Medical-Grade Privacy (De-identification)
-Your trust is our foundation. We have implemented a multi-layered **Privacy Guardrail** system following international medical de-identification standards:
-*   **Local Sanitization:** Any potential Personal Identifiable Information (PII) such as Names, Phone Numbers, Addresses, or IDs are automatically redacted on your own device before ever being sent to the AI.
-*   **Tokenized Privacy:** Sensitive data is replaced with standardized tokens (e.g., [PT], [ADDR], [PHONE]), allowing the AI to provide clinical support without knowing your identity.
-*   **Zero-Trace Reasoning:** The AI is strictly instructed not to record any suspected personal details in its internal reasoning process.
+### 2. 🛡️ Cross-Domain Privacy & De-identification
+Your trust is our foundation, especially in sensitive cases like medical crises or personal safety. We implement a multi-layered **Privacy Guardrail** system following international cross-domain de-identification standards (Medical x Legal):
+*   **Local Redaction**: Names, IDs, phone numbers, and license plates are automatically redacted on your own device before ever being sent to the AI.
+*   **Functional Anonymity**: Specific institutions (hospitals, courts, companies) are replaced with their functional roles (e.g., "a medical center", "a court", "a large enterprise") to preserve professional context while cutting physical identification links.
+*   **Temporal & Geospatial Padding**: Specific dates and precise addresses are shifted to relative time (e.g., "T-3 days") and broad regions to prevent cross-correlation tracking.
+*   **Zero-Trace Reasoning**: The AI is strictly instructed not to record any suspected personal details in its internal reasoning process, maintaining "Identity Deletion, Behavior Retention."
 
 ### 3. 🚨 Panic Button Paradigm
 The interface is not just a chat window, it's a first-aid kit:
@@ -123,11 +124,13 @@ npm start
 
 ## 💌 Our Mission
 
-This is not just a chatbot; it's a 24-hour guardian for students who find themselves alone in the dark.
+This is not just a chatbot; it's a 24-hour guardian for students who find themselves alone in the dark. 
 
-By bridging the gap between professional medical knowledge and compassionate listening, we ensure that no student—regardless of where they are from—ever has to face a crisis without a voice to hold their hand. Whether you are from Taipei, Tokyo, or New York, if you are studying in Taiwan, **HuatuoGPT-II is here for you.**
+**Anonymity and psychological safety** are the first steps toward healing. We understand that in sensitive situations—whether it's a mental health crisis or legal trauma—the fear of exposure is the greatest barrier to seeking help. That's why we've built this safe space where every request is guarded with the highest privacy standards, yet met with the warmest empathy.
 
-**Technology is the campfire around which we gather in the dark.**
+By bridging the gap between professional knowledge and compassionate listening, we ensure that no student—regardless of where they are from—ever has to face a crisis without a voice to hold their hand. Whether you are from Taipei, Tokyo, or New York, if you are studying in Taiwan, **HuatuoGPT II: Suicide Prevention Gatekeeper is here for you.**
+
+**"Technology is the campfire around which we gather in the dark."**
 
 ---
 
