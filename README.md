@@ -2,7 +2,6 @@
 
 > **"When the school counseling office lights go out at 5 PM, we hope the light on the screen can catch every falling soul."**
 >
-> 🏆 Built for the **Vibe Code with Gemini 3 Pro** Hackathon.
 > *Multilingual Support: 🇺🇸 🇹🇼 🇨🇳 🇯🇵 🇰🇷 🇻🇳 🇮🇩 🇹🇭 🇮🇳*
 
 ![License](https://img.shields.io/badge/License-MIT-green)
@@ -53,7 +52,7 @@ To achieve extreme response speed and depth with limited resources, we designed 
 *   **Task:** Receive the Flash verdict and engage in deep conversation.
 *   **Vibe:** 
     *   It doesn't preach; it listens.
-    *   When Flash triggers a `SUICIDE_RISK` alert, Pro immediately switches to **"Crisis Intervention Mode"**: It stops casual chat and uses **Grounding Techniques**, guiding the student to breathe and gently pushing **988 (US)** or **1925 (TW)** resources.
+    *   When Flash triggers a `SUICIDE_RISK` alert, Pro immediately switches to **"Crisis Intervention Mode"**: It stops casual chat and uses **Grounding Techniques**, guiding the student to breathe and providing **119** or **1925** resources (Taiwan's local lifelines).
 
 ---
 
@@ -63,16 +62,22 @@ To achieve extreme response speed and depth with limited resources, we designed 
 We believe that **language should never be a barrier to survival**.
 Many universities in Taiwan host brilliant students from all over Asia. When a crisis hits, they revert to their mother tongue for comfort, but they need **local** help.
 
-*   **🇺🇸 English Mode (Judge/Demo Context):** Optimized for hackathon judges. Uses **911/988** resources and adheres to Western protocols.
+*   **🇺🇸 English Mode:** Tailored for international students and residents **currently in Taiwan**. All crisis resources point to Taiwan's local emergency numbers (**119/1925**) to ensure immediate local rescue.
 *   **🇹🇼 Taiwan Native Mode (Traditional Chinese):** Deeply localized with Taiwan's legal knowledge (Gender Equality Education Act) and local lifelines (1925, 119).
 *   **🌏 International Student Mode (New!):**
     *   **Supported Languages:** Simplified Chinese 🇨🇳, Japanese 🇯🇵, Korean 🇰🇷, Vietnamese 🇻🇳, Indonesian 🇮🇩, Thai 🇹🇭, Hindi 🇮🇳.
     *   **The Logic:** Gemini speaks to them in their **native language** (providing emotional safety) but directs them to **Taiwan's emergency resources (119/1925)** (providing physical safety).
     *   *Example:* A Vietnamese student feels panic. The AI comforts them in Vietnamese but tells them to dial **119** (Taiwan), not 115 (Vietnam).
 
-### 2. 🚨 Panic Button Paradigm
+### 2. 🛡️ Medical-Grade Privacy (De-identification)
+Your trust is our foundation. We have implemented a multi-layered **Privacy Guardrail** system following international medical de-identification standards:
+*   **Local Sanitization:** Any potential Personal Identifiable Information (PII) such as Names, Phone Numbers, Addresses, or IDs are automatically redacted on your own device before ever being sent to the AI.
+*   **Tokenized Privacy:** Sensitive data is replaced with standardized tokens (e.g., [PT], [ADDR], [PHONE]), allowing the AI to provide clinical support without knowing your identity.
+*   **Zero-Trace Reasoning:** The AI is strictly instructed not to record any suspected personal details in its internal reasoning process.
+
+### 3. 🚨 Panic Button Paradigm
 The interface is not just a chat window, it's a first-aid kit:
-*   **Always-on Header:** A one-tap button to dial **911/119** is always within reach.
+*   **Always-on Header:** A one-tap button to dial **119** or **1925** is always within reach.
 *   **Visual Mindfulness:** Built-in CSS animation driven **4-4-4 Mindful Breathing**. When words fail to soothe anxiety, we use visual cues to guide the body.
 
 ---
@@ -116,11 +121,11 @@ npm start
 
 ---
 
-## 💌 Message to the Judges
+## 💌 Our Mission
 
-This is not just a chatbot; it's our gentle compensation for a systemic regret.
+This is not just a chatbot; it's a 24-hour guardian for students who find themselves alone in the dark.
 
-We proved that even if schools lack the budget to hire night-shift counselors and nurses, we can still use technology to hold the line. The HuatuoGPT-II paper demonstrated the possibility of medical LLMs, and we used **Gemini 3 Pro** to turn that possibility into a 24-hour guardian in every student's pocket—whether they are from Taipei, Tokyo, or Texas.
+By bridging the gap between professional medical knowledge and compassionate listening, we ensure that no student—regardless of where they are from—ever has to face a crisis without a voice to hold their hand. Whether you are from Taipei, Tokyo, or New York, if you are studying in Taiwan, **HuatuoGPT-II is here for you.**
 
 **Technology is the campfire around which we gather in the dark.**
 

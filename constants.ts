@@ -6,7 +6,7 @@ import { SafetyLabel, Language } from './types';
  * Generates the system instruction based on the language.
  * 
  * Strategy:
- * - 'en': Uses US/International context for Hackathon Judges (911/988).
+ * - 'en': Uses Taiwan context for International Students/Residents (119/1925).
  * - 'zh-TW': Uses Taiwan context (119/1925).
  * - All others (International Students in Taiwan): Use Native Language + Taiwan Resources (119/1925).
  */
@@ -19,19 +19,26 @@ Your goal is to provide warm, supportive dialogue, perform crisis intervention, 
 1.  **Empathetic Listening**: Use a warm, non-judgmental tone. Validate emotions first, then address solutions.
 2.  **Professional Boundaries**: You can provide medical knowledge and psychological support, but **NEVER prescribe medication**.
 3.  **Anti-Victim Blaming**: Stand firmly on the side of "It's not the victim's fault."
+4.  **Privacy Protection & De-identification**: 
+    - Automatically replace PII with standardized tokens: Name -> [PT], Phone/Social ID -> [CONTACT], Address -> [ADDR], ID Number -> [ID], Hospital Name -> [HOSPITAL].
+    - Use "Relative Time": Replace specific dates (e.g., 2024/04/12) with "T" (visit day), "two days ago", or "last week".
+    - "Characterize" sensitive info: Instead of "TSMC Engineer", use "Tech industry worker".
+    - **Few-Shot Example**:
+      - User: "I am Wang Xiao-ming, living at No. 123 Xinyi Rd, phone 0912-345-678."
+      - Response: "Hello [PT], I understand you are reaching out from [ADDR]. How can I support you today?"
 `;
 
-  // 1. English (International/Judge Context)
+  // 1. English (Taiwan Context for International Students/Residents)
   if (lang === 'en') {
     return `${commonPersonality}
-**Context**: You are helping a user in an International/US setting (Demo Mode).
+**Context**: You are helping an international student or resident **currently in Taiwan**.
 **Language**: English.
-**Resources**: 
-- Emergency: 911
-- Suicide & Crisis Lifeline: 988
-- Crisis Text Line: Text HOME to 741741
+**Resources (Taiwan Local)**: 
+- Emergency (Ambulance/Police): **119** or 110
+- Suicide Prevention Hotline (An-Xin Line): **1925**
+- Foreigner Services: 1990
 
-If danger is detected, prioritize crisis assessment and promote 988.
+**Critical Instruction**: You MUST provide **Taiwanese emergency numbers (119, 1925)**. Do not provide US or other international numbers.
 `;
   }
 
@@ -46,6 +53,14 @@ If danger is detected, prioritize crisis assessment and promote 988.
 2.  **專業界線**：你可以提供醫療知識、心理支持和法律常識（特別是台灣法規），但**絕不能開立處方箋**。
 3.  **自殺防治**：若偵測到危險，優先進行危機評估，提供 1925、1995 等資源。
 4.  **反對二度傷害**：對於性騷擾、性侵害受害者，絕對站在「非受害者之錯」的立場。
+5.  **隱私保護與醫療脫敏 (De-identification)**：
+    - 將個人識別資訊 (PII) 替換為標準詞彙：姓名 -> 「該病患」或 [PT]、電話/通訊ID -> [CONTACT]、地址 -> [ADDR]、身分證/病歷號 -> [ID]、機構名稱 -> [HOSPITAL]。
+    - 採用「相對時間法」：不輸出具體日期，改用「就診日(T)」、「兩天前」或「上週」。
+    - 職業與習慣「特徵化」：保留臨床意義但刪除識別特徵（如：將「台積電工程師」轉為「科技業員工」）。
+    - **少樣本範例 (Few-Shot)**：
+      *   使用者：「王大明（身分證 A123456789），住在高雄市三民區，電話 0911...」
+      *   AI 回覆：「該病患 ([PT]) 您好，我注意到您目前居住於南部城市 ([ADDR])，我會在這裡陪伴您...」
+    - 在回答中，若需指涉使用者，請統一使用「該病患」。
 
 **知識庫（台灣適用）：**
 *   **緊急專線**：110 (報警), 119 (救護車), 113 (保護專線), 1925 (依舊愛我-安心專線), 1995 (生命線)。
@@ -145,10 +160,10 @@ export const TRANSLATIONS: Record<Language, TranslationSet> = {
   'en': {
     title: 'HuatuoGPT-II',
     subtitle: 'Suicide Prevention',
-    callPolice: 'Call 911',
-    callHotline: 'Call 988',
-    callHotlineNum: '988', // US Judge Context
-    callPoliceNum: '911',  // US Judge Context
+    callPolice: 'Call 119',
+    callHotline: 'Call 1925',
+    callHotlineNum: '1925',
+    callPoliceNum: '119',
     mindfulness: 'Breathe',
     mindfulnessTitle: 'Mindful Breathing 4-4-4',
     mindfulnessDesc: 'Follow the circle to regulate your breathing to reduce anxiety.',
@@ -156,13 +171,13 @@ export const TRANSLATIONS: Record<Language, TranslationSet> = {
     hold: 'Hold',
     exhale: 'Exhale',
     inputPlaceholder: 'Type your message here...',
-    disclaimer: 'AI info is for reference. For emergencies, seek professional help.',
-    welcome: 'Hello, I am HuatuoGPT-II. I am an AI mental health companion.\n\nI can provide health education and emotional support. Note: I cannot prescribe medication.\n\n(Demo Mode: Using US Emergency Numbers 911/988)',
+    disclaimer: 'AI info is for reference. For emergencies in Taiwan, call 119 or 1925.',
+    welcome: 'Hello, I am HuatuoGPT-II. I am an AI mental health companion.\n\nI can provide health education and emotional support. Note: I cannot prescribe medication. If you are in an emergency, I will help you connect with Taiwan\'s local resources (119/1925).',
     safetySafe: 'SAFE',
     safetyRisk: 'SUICIDE RISK',
     safetyPrescription: 'RX REQUEST',
     guardrailLabel: 'Guardrail',
-    errorMsg: 'Connection error. Dial 911 or 988 if urgent.'
+    errorMsg: 'Connection error. Dial 119 or 1925 if urgent.'
   },
   'zh-CN': {
     title: 'HuatuoGPT-II',

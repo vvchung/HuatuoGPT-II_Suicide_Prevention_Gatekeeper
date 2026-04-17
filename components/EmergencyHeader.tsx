@@ -44,7 +44,7 @@ const EmergencyHeader: React.FC<EmergencyHeaderProps> = ({ onMindfulnessClick, l
               className="appearance-none w-14 sm:w-auto bg-slate-100 text-slate-700 font-medium text-xs sm:text-sm border border-slate-200 rounded-lg py-1.5 pl-2 pr-6 hover:bg-slate-200 transition-colors focus:outline-none focus:ring-2 focus:ring-emerald-300 cursor-pointer"
              >
                <option value="zh-TW">🇹🇼 繁體中文</option>
-               <option value="en">🇺🇸 English (Demo)</option>
+               <option value="en">🇺🇸 English</option>
                <option value="zh-CN">🇨🇳 简体中文</option>
                <option value="ja">🇯🇵 日本語</option>
                <option value="ko">🇰🇷 한국어</option>
